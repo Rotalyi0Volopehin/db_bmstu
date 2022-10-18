@@ -4,12 +4,10 @@ from db_context_manager import DBContextManager
 
 def select(db_config: dict, sql: str) -> Tuple[Tuple, List[str]]:
     """
-    Выполняет запрос (SELECT) к БД с указанным конфигом и запросом.
-    Args:
-        db_config: dict - Конфиг для подключения к БД.
-        sql: str - SQL-запрос.
-    Return:
-        Кортеж с результатом запроса и описанеим колонок запроса.
+    это типо реализация select из sql только на питоне (хз зачем так сложно)
+    select запрос к БД с указанным конфигом и sql-запросом.
+        db_config - Конфиг для подключения к БД - это словарь
+        sql- SQL-запрос.
     """
     result = tuple()
     schema = []
@@ -20,4 +18,4 @@ def select(db_config: dict, sql: str) -> Tuple[Tuple, List[str]]:
         print(sql)
         schema = [column[0] for column in cursor.description]
         result = cursor.fetchall()
-    return result, schema
+    return result, schema #возвращает список(точнее кортеж) с результатом запроса (result) и описанием колонок запроса (schema - это список заголовков таблицы)

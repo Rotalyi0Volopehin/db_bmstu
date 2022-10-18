@@ -12,8 +12,7 @@ class DBContextManager:
     def __init__(self, config: dict):
         """
         Инициализация объекта подключения.
-        Args:
-             config: dict - Конфиг дял подключения к БД.
+        config: dict - словарь дял подключения к БД.
         """
         self.config: dict = config
         self.conn: Optional[Connection] = None

@@ -17,14 +17,14 @@ class UseDatabase:
             return self.cursor
         except OperationalError as err:
             if err.args[0] == 1045:
-                print('Проверьте логин / пароль')
+                print('Неправильный логин или пароль в конфиге')
             elif err.args[0] == 1049:
-                print('Проверьте имя базы данных')
+                print('Ошибка подключения к бд')
             else:
                 print(err)
             return None
 
-    def __exit__(self, exc_type, exc_val, exc_tr) -> bool:
+    def __exit__(self, exc_type, exc_val, exc_tr): #-> bool:
         if exc_val:
             # print(exc_val)
             # print(exc_type)

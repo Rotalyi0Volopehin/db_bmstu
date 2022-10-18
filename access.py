@@ -2,7 +2,7 @@ from functools import wraps
 
 from flask import session, render_template, current_app, request, redirect, url_for
 
-
+# THIS IS DECORATOR
 def login_required(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -12,16 +12,17 @@ def login_required(func):
     return wrapper
 
 
-def group_validation(config: dict) -> bool:
+def group_validation(config: dict) -> bool: # проверяем наличие группы у внутренних пользователей
     endpoint_app = request.endpoint.split('.')[0]
+    print(endpoint_app)
     if 'user_group' in session:
         user_group = session['user_group']
         if user_group in config and endpoint_app in config[user_group]:
             return True
     return False
 
-
-def group_required(f):
+# THIS IS DECORATOR
+def group_required(f): #проверка чтобы внешние пользователи не залезли к внутренним
     @wraps(f)
     def wrapper(*args, **kwargs):
         config = current_app.config['access_config']
@@ -30,18 +31,17 @@ def group_required(f):
         return render_template('exceptions/internal_only.html')
     return wrapper
 
-
-def external_validation(config):
+def external_validation(config): # проверка для клиентов (внешних пользователей)
     endpoint_app = request.endpoint.split('.')[0]
-    user_id = session.get('user_id', None)
-    user_group = session.get('user_group', None)
+    user_id = session.get('ex_user_id', None) # у словарика сессии забираем значения
+    user_group = session.get('ex_user_group', None)
     if user_id and user_group is None:
         if endpoint_app in config['external']:
             return True
     return False
 
 
-def external_required(f):
+def external_required(f): #проверка чтобы внутренние сотрудники не залезли к внешним
     @wraps(f)
     def wrapper(*args, **kwargs):
         config = current_app.config['access_config']
