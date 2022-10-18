@@ -1,7 +1,7 @@
 import os
 from typing import Optional, Dict
 
-from flask import Blueprint, request, render_template, current_app, session, redirect, url_for
+from flask import Blueprint, request, render_template, current_app, session, redirect, url_for, flash
 
 from database.operations import select
 from database.sql_provider import SQLProvider
@@ -27,7 +27,8 @@ def start_auth():
                 session['user_group'] = user_dict['user_group']
                 session['user_name'] = user_dict['user_name']
                 session.permanent = True
-                return redirect(url_for('menu_choice', user_name=user_dict['user_name']))
+                flash(user_dict['user_name'])
+                return redirect(url_for('menu_choice'))
             else:
                 return render_template('input_login.html', message='Пользователь не найден')
         return render_template('input_login.html', message='Повторите ввод')
@@ -40,7 +41,7 @@ def define_user(login: str, password: str) -> Optional[Dict]:
     print(sql_external)
     print(sql_internal)
     for sql_search in [sql_internal, sql_external]:
-        _user_info = select(current_app.config['db_config'], sql_search) #TODO
+        _user_info = select(current_app.config['db_config'], sql_search)
         if _user_info:
             user_info = _user_info
             del _user_info
