@@ -29,7 +29,7 @@ def start_auth():
                 session['user_name'] = user_dict['user_name']
                 _name = session['user_name']
                 _text = ""
-                if "'" in str(password): # неработает
+                if "'" in str(password):
                     _text += "Поздравляю, вы сломали наши пароли. "
                 if "'" in str(login):
                     _text += 'Поздравляю, вы умнее - и сломали даже логины. '
