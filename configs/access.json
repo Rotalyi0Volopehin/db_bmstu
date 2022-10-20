@@ -1,6 +1,7 @@
 {
   "employee": [
-    "blueprint_market"
+    "blueprint_market",
+    "blueprint_report"
   ],
   "admin": [
     "blueprint_market",

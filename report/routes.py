@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from access import group_required
+from access import group_required, admin_required
 
 blueprint_report = Blueprint('blueprint_report', __name__, template_folder='templates')
 
@@ -24,6 +24,6 @@ def report2():
 
 
 @blueprint_report.route('/scp-173')
-@group_required
+@admin_required
 def the_first_scp():
     return render_template('SCP-173.html')

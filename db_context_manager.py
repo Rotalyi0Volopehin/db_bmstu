@@ -12,7 +12,8 @@ class DBContextManager:
     def __init__(self, config: dict):
         """
         Инициализация объекта подключения.
-        config: dict - словарь дял подключения к БД.
+        dict - словарь для подключения к БД.
+        config это json файлик dbconfig.json
         """
         self.config: dict = config
         self.conn: Optional[Connection] = None
@@ -40,7 +41,7 @@ class DBContextManager:
 
     def __exit__(self, exc_type, exc_val, exc_tr) -> bool:
         """
-        Реализует логику выхода из контекстого менеджера для работы с БД.
+        Реализует логику выхода из контекстного менеджера для работы с БД.
         Закрывает соединение и курсор.
         Возвращаемое значение всего True для обеспечения сокрытия списка ошибок в консоли.
         Args:

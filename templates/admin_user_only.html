@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block admin_user %}
+<a href="{{ url_for('blueprint_report.report_create_1') }}">Создание отчетов</a><br><br>
+<a href="{{ url_for('blueprint_report.report1') }}">Просмотр отчетов группы 1</a><br><br>
+<a href="{{ url_for('blueprint_report.report2') }}">Просмотр отчетов группы 2</a><br><br>
+<a href="{{ url_for('blueprint_report.the_first_scp') }}">Все объекты класса кетер подросли на целый метр <br> и какой сейчас длины <br> [ДАННЫЕ УДАЛЕНЫ]</a><br><br>
+<a href="/exit"> <s> Выход <br> </s></a>
+{% endblock %}

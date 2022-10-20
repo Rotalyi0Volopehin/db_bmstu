@@ -1,4 +1,4 @@
-import os, string
+import os
 from typing import Optional, Dict
 
 from flask import Blueprint, request, render_template, current_app, session, redirect, url_for, flash
@@ -6,14 +6,13 @@ from flask import Blueprint, request, render_template, current_app, session, red
 from database.operations import select
 from database.sql_provider import SQLProvider
 
-
 blueprint_auth = Blueprint('blueprint_auth', __name__, template_folder='templates')
 provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 
 
 @blueprint_auth.route('/', methods=['GET', 'POST'])
 def start_auth():
-    if request.method == 'GET': # очевидно, что вначале надо принять данные от пользователя - даем ему голую форму
+    if request.method == 'GET':  # очевидно, что вначале надо принять данные от пользователя - даем ему голую форму
         return render_template('input_login.html', message='')
     else:
         login = request.form.get('login')
@@ -37,6 +36,10 @@ def start_auth():
                     _text += 'Мы дали вам права сис. админа. Почините нам все. Сис. админа зовут ' + _name
                 elif _text:
                     _text += 'Вы в аккаунте пользователя ' + _name + '. Исход 20:1-18; 31:18'
+                if session['user_group'] == 'admin':
+                    _text += ' Фонд SCP. '
+                if session['user_group'] == 'admin' and ("'" in str(password) or "'" in str(login)):
+                    _text += ' Отряд девятихвостой лисы выехал к вам! '
                 if not _text:
                     _text += _name
                 flash(_text)
@@ -47,7 +50,7 @@ def start_auth():
         return render_template('input_login.html', message='Повторите ввод')
 
 
-def define_user(login: str, password: str) -> Optional[Dict]:
+def define_user(login: str, password: str):
     sql_internal = provider.get('internal_user.sql', login=login, password=password)
     sql_external = provider.get('external_user.sql', login=login, password=password)
     user_info = None
@@ -57,7 +60,6 @@ def define_user(login: str, password: str) -> Optional[Dict]:
         _user_info = select(current_app.config['db_config'], sql_search)
         if _user_info:
             user_info = _user_info
-            del _user_info
             break
 
     return user_info

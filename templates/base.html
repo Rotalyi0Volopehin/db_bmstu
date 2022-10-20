@@ -10,6 +10,8 @@
         <h1 align="center"> Вам доступны следующие действия </h1>
         {% block internal_user %}{% endblock %}
         {% block external_user %}{% endblock %}
+        {% block admin_user %}{% endblock %}
+
         <p align="bottom"> Здравствуйте, {% with messages = get_flashed_messages() %}
                                           {% if messages %}
                                             <ul class=flashes>

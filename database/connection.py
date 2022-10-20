@@ -6,7 +6,7 @@ from pymysql.err import OperationalError
 
 
 class UseDatabase:
-
+    # - по сути этот класс реальная пустышка благодаря __ __
     def __init__(self, config: dict):
         self.config = config
 
