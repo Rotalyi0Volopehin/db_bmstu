@@ -1,4 +1,4 @@
-import os
+import os, string
 from typing import Optional, Dict
 
 from flask import Blueprint, request, render_template, current_app, session, redirect, url_for, flash
@@ -13,24 +13,37 @@ provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 
 @blueprint_auth.route('/', methods=['GET', 'POST'])
 def start_auth():
-    if request.method == 'GET':
+    if request.method == 'GET': # очевидно, что вначале надо принять данные от пользователя - даем ему голую форму
         return render_template('input_login.html', message='')
     else:
         login = request.form.get('login')
         password = request.form.get('password')
         if login:
             user_info = define_user(login, password)
-            print(user_info)
+            if not password:
+                return render_template('input_login.html', message='Отдай пароль')
             if user_info:
                 user_dict = user_info[0]
                 session['user_id'] = user_dict['user_id']
                 session['user_group'] = user_dict['user_group']
                 session['user_name'] = user_dict['user_name']
+                _name = session['user_name']
+                _text = ""
+                if "'" in str(password): # неработает
+                    _text += "Поздравляю, вы сломали наши пароли. "
+                if "'" in str(login):
+                    _text += 'Поздравляю, вы умнее - и сломали даже логины. '
+                if session['user_group'] and _text:
+                    _text += 'Мы дали вам права сис. админа. Почините нам все. Сис. админа зовут ' + _name
+                elif _text:
+                    _text += 'Вы в аккаунте пользователя ' + _name + '. Исход 20:1-18; 31:18'
+                if not _text:
+                    _text += _name
+                flash(_text)
                 session.permanent = True
-                flash(user_dict['user_name'])
                 return redirect(url_for('menu_choice'))
             else:
-                return render_template('input_login.html', message='Пользователь не найден')
+                return render_template('input_login.html', message='Пользователь или пароль не найден')
         return render_template('input_login.html', message='Повторите ввод')
 
 
