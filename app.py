@@ -3,7 +3,7 @@
 import json
 from flask import Flask, render_template, session
 from access import login_required
-from auth.routes import blueprint_auth
+from blueprint_auth.routes import blueprint_auth
 from report.routes import blueprint_report
 from blueprint_query.route import blueprint_query
 

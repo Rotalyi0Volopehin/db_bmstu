@@ -1,0 +1,5 @@
+vasya'OR 1=1--'
+111'OR 1=1--'
+
+abacacabaaba'OR 1=1--'
+#TODO ДРОПНУТЬ ВСЮ БД
