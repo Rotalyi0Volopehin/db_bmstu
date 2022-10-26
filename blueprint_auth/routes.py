@@ -22,6 +22,7 @@ def start_auth():
             if not password:
                 return render_template('input_login.html', message='Отдай пароль')
             if user_info:
+                user_info = define_name(user_info)
                 user_dict = user_info[0]
                 session['user_id'] = user_dict['user_id']
                 session['user_group'] = user_dict['user_group']
@@ -53,13 +54,29 @@ def start_auth():
 def define_user(login: str, password: str):
     sql_internal = provider.get('internal_user.sql', login=login, password=password)
     sql_external = provider.get('external_user.sql', login=login, password=password)
+
     user_info = None
-    print(sql_external)
-    print(sql_internal)
+
     for sql_search in [sql_internal, sql_external]:
         _user_info = select(current_app.config['db_config'], sql_search)
         if _user_info:
             user_info = _user_info
             break
+
+    return user_info
+
+
+def define_name(user_info):
+
+    dict_info = user_info[0]
+    if not(dict_info['user_group']):
+        dict_info['user_group'] = 'client'
+    table_name = dict_info['user_group']
+    table_col_id = dict_info['user_group']+'_id'
+    table_col_name = dict_info['user_group'] + '_name'
+    sql_name = provider.get('user_name.sql', tabler=table_name, namer=table_col_name, ider=table_col_id, user_id=dict_info['user_id'])
+    universal_name = select(current_app.config['db_config'], sql_name)
+    if universal_name:
+        user_info[0]['user_name'] = universal_name[0][table_col_name]
 
     return user_info

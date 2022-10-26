@@ -1,9 +1,13 @@
 {
-  "employee": [
+  "courier": [
     "blueprint_market",
     "blueprint_report"
   ],
-  "admin": [
+  "dispatcher": [
+    "blueprint_market",
+    "blueprint_report"
+  ],
+  "executive": [
     "blueprint_market",
     "blueprint_report"
   ],

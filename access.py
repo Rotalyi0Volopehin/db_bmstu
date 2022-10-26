@@ -16,7 +16,7 @@ def login_required(func):
 
 def group_validation(config: dict) -> bool:  # проверяем наличие группы у внутренних пользователей
     endpoint_app = request.endpoint.split('.')[0]
-    print("ENDPOINT IS",endpoint_app)
+    print("ENDPOINT IS", endpoint_app)
     if 'user_group' in session:
         user_group = session['user_group']
         if user_group in config and endpoint_app in config[user_group]:
@@ -63,12 +63,54 @@ def admin_validation(config: dict) -> bool:  # [данные удалены]
     if 'user_group' in session:
         user_group = session['user_group']
         if user_group in config and endpoint_app in config[user_group]:
-            if session['user_group'] == 'admin':
+            if session['user_group'] == 'dispatcher':
                 return True
     return False
 
 
 def admin_required(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        config = current_app.config['access_config']
+        if admin_validation(config):
+            return f(*args, **kwargs)
+        return render_template('exceptions/external_only.html')
+
+    return wrapper
+
+
+def ceo_validation(config: dict) -> bool:  # [данные удалены]
+    endpoint_app = request.endpoint.split('.')[0]
+    if 'user_group' in session:
+        user_group = session['user_group']
+        if user_group in config and endpoint_app in config[user_group]:
+            if session['user_group'] == 'executive':
+                return True
+    return False
+
+
+def ceo_required(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        config = current_app.config['access_config']
+        if admin_validation(config):
+            return f(*args, **kwargs)
+        return render_template('exceptions/external_only.html')
+
+    return wrapper
+
+
+def deliver_validation(config: dict) -> bool:  # [данные удалены]
+    endpoint_app = request.endpoint.split('.')[0]
+    if 'user_group' in session:
+        user_group = session['user_group']
+        if user_group in config and endpoint_app in config[user_group]:
+            if session['user_group'] == 'courier':
+                return True
+    return False
+
+
+def deliver_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         config = current_app.config['access_config']
