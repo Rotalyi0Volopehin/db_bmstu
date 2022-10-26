@@ -5,7 +5,7 @@ from flask import Flask, render_template, session
 from access import login_required
 from blueprint_auth.routes import blueprint_auth
 from blueprint_report.routes import blueprint_report
-from blueprint_query.route import blueprint_query
+from blueprint_query.routes import blueprint_query
 
 app = Flask(__name__)
 app.secret_key = 'stampede3stampede2stampede1'

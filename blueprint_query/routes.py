@@ -1,10 +1,9 @@
 import os  # работа с объектами операционной системы
 
 from flask import Flask, Blueprint, request, render_template, current_app  # глобальная переменная с конфигом app
-
 from db_work import select
 from database.sql_provider import SQLProvider
-
+from access import group_required, admin_required, deliver_required, ceo_required
 
 blueprint_query = Blueprint('blueprint_query', __name__, template_folder='templates')  # создание blueprint'а
 
@@ -25,3 +24,21 @@ def queries():
             return render_template('db_result.html', schema=schema, result=product_result)
         else:
             return "Repeat input"
+
+'''
+#TODO
+@blueprint_query.route('/')
+@admin_required
+def abacaba():
+    pass
+
+@blueprint_query.route('/')
+@deliver_required
+def abacaba():
+    pass
+
+@blueprint_query.route('/')
+@ceo_required
+def abacaba():
+    pass
+'''

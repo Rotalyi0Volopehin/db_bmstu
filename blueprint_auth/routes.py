@@ -74,8 +74,10 @@ def define_name(user_info):
     table_name = dict_info['user_group']
     table_col_id = dict_info['user_group']+'_id'
     table_col_name = dict_info['user_group'] + '_name'
+
     sql_name = provider.get('user_name.sql', tabler=table_name, namer=table_col_name, ider=table_col_id, user_id=dict_info['user_id'])
     universal_name = select(current_app.config['db_config'], sql_name)
+
     if universal_name:
         user_info[0]['user_name'] = universal_name[0][table_col_name]
 
