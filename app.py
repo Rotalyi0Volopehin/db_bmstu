@@ -4,14 +4,14 @@ import json
 from flask import Flask, render_template, session
 from access import login_required
 from blueprint_auth.routes import blueprint_auth
-from report.routes import blueprint_report
+from blueprint_report.routes import blueprint_report
 from blueprint_query.route import blueprint_query
 
 app = Flask(__name__)
 app.secret_key = 'stampede3stampede2stampede1'
 
 app.register_blueprint(blueprint_auth, url_prefix='/auth')
-app.register_blueprint(blueprint_report, url_prefix='/report')
+app.register_blueprint(blueprint_report, url_prefix='/reports')
 app.register_blueprint(blueprint_query, url_prefix='/queries')
 
 app.config['db_config'] = json.load(open('configs/db.json'))
