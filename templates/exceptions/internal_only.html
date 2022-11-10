@@ -1,8 +1,26 @@
-{% extends 'exceptions/base.html' %}
+{% extends 'base.html' %}
 
-{% block external_users %}
-<div>
-    <h1>Данный ресурс доступен только для внутренних пользователей</h1>
-    <p>Ты как сюда попал?</p>
-</div>
+{% block internal_users %}
+<div class="newletter-popup" style="left: 0px; position: absolute; top: 238.664px; z-index: 9999; opacity: 1; display: block;">
+            <div id="popup2">
+                <span class="b-close" onclick="location.href='/';"><span><i class="dlicon ui-1_simple-remove"></i></span></span>
+            </div>
+            <div class="popup-wrapper-all">
+                <div class="popup-subscribe-area">
+                    <span>Вход запрещён</span>
+                    <h2>Авторизуйтесь за сотрудника</h2>
+                    <div class="subscribe-bottom">
+                        <form action="https://hh.ru" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+                            <div class="mc-form">
+                                <div class="clear-2"><input type="submit" value="Найти вакансию" class="button"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="popup-image">
+                    <img src="/static/img/bg/no-access.jpg" alt="banner">
+                </div>
+            </div>
+        </div>
+
 {% endblock %}

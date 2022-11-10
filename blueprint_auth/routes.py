@@ -13,17 +13,19 @@ provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 @blueprint_auth.route('/', methods=['GET', 'POST'])
 def start_auth():
     if request.method == 'GET':  # очевидно, что вначале надо принять данные от пользователя - даем ему голую форму
-        return render_template('input_login.html', message='')
+        return render_template('base.html', message='')
     else:
         login = request.form.get('login')
         password = request.form.get('password')
+        print(login,password)
         if login:
             user_info = define_user(login, password)
             if not password:
-                return render_template('input_login.html', message='Отдай пароль')
+                return render_template('base.html', message='Отдай пароль')
             if user_info:
                 user_info = define_name(user_info)
                 user_dict = user_info[0]
+                print(user_dict)
                 session['user_id'] = user_dict['user_id']
                 session['user_group'] = user_dict['user_group']
                 session['user_name'] = user_dict['user_name']
@@ -47,8 +49,8 @@ def start_auth():
                 session.permanent = True
                 return redirect(url_for('menu_choice'))
             else:
-                return render_template('input_login.html', message='Пользователь или пароль не найден')
-        return render_template('input_login.html', message='Повторите ввод')
+                return render_template('base.html', message='Пользователь или пароль не найден')
+        return render_template('base.html', message='Повторите ввод')
 
 
 def define_user(login: str, password: str):
@@ -67,18 +69,24 @@ def define_user(login: str, password: str):
 
 
 def define_name(user_info):
-
     dict_info = user_info[0]
+    print(dict_info)
     if not(dict_info['user_group']):
         dict_info['user_group'] = 'client'
+
+    table_role = 'owner_'+dict_info['user_group']+'_id'
+    sql_role = provider.get('user_role.sql', ider=table_role, user_id=dict_info['user_id'])
+    table_owner = select(current_app.config['db_config'], sql_role)
+    if table_owner:
+        table_owner = table_owner[0][table_role]
+    else:
+        table_owner = dict_info['user_id']
     table_name = dict_info['user_group']
     table_col_id = dict_info['user_group']+'_id'
     table_col_name = dict_info['user_group'] + '_name'
-
-    sql_name = provider.get('user_name.sql', tabler=table_name, namer=table_col_name, ider=table_col_id, user_id=dict_info['user_id'])
+    sql_name = provider.get('user_name.sql', tabler=table_name, namer=table_col_name, ider=table_col_id, user_id=table_owner)
+    print(sql_name)
     universal_name = select(current_app.config['db_config'], sql_name)
-
     if universal_name:
         user_info[0]['user_name'] = universal_name[0][table_col_name]
-
     return user_info

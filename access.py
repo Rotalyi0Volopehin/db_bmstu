@@ -38,11 +38,12 @@ def group_required(f):  # проверка чтобы внешние польз�
 
 def external_validation(config):  # проверка для клиентов (внешних пользователей)
     endpoint_app = request.endpoint.split('.')[0]
-    user_id = session.get('ex_user_id', None)  # у словарика сессии забираем значения
-    user_group = session.get('ex_user_group', None)
-    if user_id and user_group is None:
-        if endpoint_app in config['external']:
-            return True
+    user_id = session.get('user_id', None)  # у словарика сессии забираем значения
+    user_group = session.get('user_group', None)
+    print("USER IS IN ",user_group)
+    if user_id and user_group == 'client':
+        #if endpoint_app in config['client']:
+        return True
     return False
 
 
