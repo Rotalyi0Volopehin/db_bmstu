@@ -1,7 +1,2 @@
-SELECT 
-	* 
-FROM 
-	client 
-WHERE 
-	client_date BETWEEN '2013-03-01' AND '2013-07-31'
-;
+SELECT order_date_create as 'пп',order_time_arrive,order_time_ordery,order_summary_price,order_meals_amount,order_status_deliver,order_client_mark
+FROM pizza_order WHERE client_id = $user_id;

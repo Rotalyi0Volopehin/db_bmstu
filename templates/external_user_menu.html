@@ -1,8 +1,44 @@
 {% extends 'base.html' %}
 
 {% block external_user %}
-<p align="center">
-    <a href="{{ url_for('blueprint_query.queries') }}">Магазин еды</a><br><br>
-    <a href="/exit"> Нажмите для выхода из системы</a><br>
+<div class="services">
+    <div class="container">
+        <div class="main-title">
+            <span><em></em></span>
+            <h2 id="orderFood">История заказов</h2>
+            <p>Вы же у нас уже заказывали, верно?</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 animated-element">
+                <a href="{{ url_for('blueprint_query.client_history') }}" class="service-link">
+                    <div class="box text-center">
+                        <div class="icon d-flex align-items-end"><i class="icon icon-history"></i></div>
+                        <h3 class="service-title">Посмотреть историю заказов</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="services">
+    <div class="container">
+        <div class="main-title">
+            <span><em></em></span>
+            <h2 id="orderFood">Заказ блюд</h2>
+            <p>Выберите способ оплаты</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 animated-element">
+                <a href="{{ url_for('blueprint_query.queries') }}" class="service-link"> <!-- href /order -->
+                    <div class="box text-center">
+                        <div class="icon d-flex align-items-end"><i class="icon icon-wallet"></i></div>
+                        <h3 class="service-title">Оплатите заказ наличными</h3>
+                        <p>или картой курьеру</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

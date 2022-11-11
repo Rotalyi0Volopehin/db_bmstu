@@ -94,7 +94,7 @@ def ceo_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         config = current_app.config['access_config']
-        if admin_validation(config):
+        if ceo_validation(config):
             return f(*args, **kwargs)
         return render_template('exceptions/external_only.html')
 
@@ -115,7 +115,7 @@ def deliver_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         config = current_app.config['access_config']
-        if admin_validation(config):
+        if deliver_validation(config):
             return f(*args, **kwargs)
         return render_template('exceptions/external_only.html')
 

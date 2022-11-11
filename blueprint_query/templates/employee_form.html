@@ -56,38 +56,44 @@
 					{% if (session.get('user_group'))=='client' or (session.get('user_group'))==None %}
                     <a href="/order" class="btn-1 medium animated-element">Заказать</a>
                     {%  endif  %}
-					<a href="#orderFood" class="mouse-frame nice-scroll">
+					<a href="#product" class="mouse-frame nice-scroll">
 						<div class="mouse"></div>
 					</a>
 				</div>
 			</div>
 			<!-- Hero End -->
 
-
-
 			<!-- Services -->
             {% block internal_users %}{% endblock %}
-            {% block internal_user %}{% endblock %}
 
-            <p align="bottom"> {% with messages = get_flashed_messages() %}
-                                              {% if messages %}
-                                                <ul class=flashes>
-                                                {% for message in messages %}
-                                                  <font size="10"> Здравствуйте, {{ message }} </font>
-                                                {% endfor %}
-                                                </ul>
-                                              {% endif %}
-                                             {% endwith %}
+            <div class="services">
+				<div class="container">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
 
-            {% block external_user %}{% endblock %}
-            {% block admin_user %}{% endblock %}
-            {% block executive_user %} {% endblock %}
-            {% block courier_user %} {% endblock %}
+                            {% for message in messages %}
+                                <font size="10"> <h2 align="center"> {{ message }} </h2> </font>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    <h2 align="center"> Увольнение сотрудника</h2>
+                    <div align = center>
+                        <form action="", method ="POST">
+                            <label for="product">Введите ФИО сотрудника</label>
+                            <input name = fullname id="fullname" type = text placeholder = "Виталий Цаль">
+                            <label for="product">Введите должность сотрудника</label>
+                            <input name = job id="job" type = text placeholder = "курьер">
+                            <br><br>
+                            <input type = submit value ="Отправить">
+                        </form>
+
+                    </div>
+				</div>
+			</div>
 
 
-
-
-			<!-- Services End -->
 
 			<div class="banner animated-element">
 				<div class="container">

@@ -1,15 +1,18 @@
 {
   "courier": [
     "blueprint_market",
-    "blueprint_report"
+    "blueprint_report",
+    "blueprint_query"
   ],
   "dispatcher": [
     "blueprint_market",
-    "blueprint_report"
+    "blueprint_report",
+    "blueprint_query"
   ],
   "executive": [
     "blueprint_market",
-    "blueprint_report"
+    "blueprint_report",
+    "blueprint_query"
   ],
   "client": [
     "blueprint_market",

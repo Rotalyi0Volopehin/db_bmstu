@@ -32,12 +32,15 @@ def exit_func():
 def menu_choice():
     print(session.get('user_group') )
     if session.get('user_group') == 'dispatcher':
-        return render_template('admin_user_only.html')
+        return render_template('dispatcher_user_menu.html')
 
-    if session.get('user_group', None):
-        return render_template('internal_user_menu.html')
+    if session.get('user_group') == 'client':
+        return render_template('external_user_menu.html')
 
-    return render_template('external_user_menu.html')
+    if session.get('user_group') == 'executive':
+        return render_template('executive_user_menu.html')
+
+    return render_template('courier_user_menu.html')
 
 
 @app.route('/order', methods=['GET', 'POST'])
