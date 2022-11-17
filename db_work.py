@@ -15,7 +15,6 @@ def select(db_config: dict, sql: str) -> Tuple[Tuple, List[str]]:
         if cursor is None:
             raise ValueError('Cursor not found')
         cursor.execute(sql)
-        print(sql)
         schema = [column[0] for column in cursor.description]
         result = cursor.fetchall()
     return result, schema #возвращает список(точнее кортеж) с результатом запроса (result) и описанием колонок запроса (schema - это список заголовков таблицы)

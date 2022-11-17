@@ -2,7 +2,7 @@
 
 import json
 from flask import Flask, render_template, session, redirect, url_for
-from access import login_required, external_required, group_required, admin_required
+from access import login_required, external_required, group_required
 from blueprint_auth.routes import blueprint_auth
 from blueprint_report.routes import blueprint_report
 from blueprint_query.routes import blueprint_query
@@ -30,17 +30,17 @@ def exit_func():
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def menu_choice():
-    print(session.get('user_group') )
+    print('THE USER GROUP IS', session.get('user_group') )
     if session.get('user_group') == 'dispatcher':
         return render_template('dispatcher_user_menu.html')
 
-    if session.get('user_group') == 'client':
-        return render_template('external_user_menu.html')
+    if session.get('user_group') == 'courier':
+        return render_template('courier_user_menu.html')
 
     if session.get('user_group') == 'executive':
         return render_template('executive_user_menu.html')
 
-    return render_template('courier_user_menu.html')
+    return render_template('external_user_menu.html')
 
 
 @app.route('/order', methods=['GET', 'POST'])
@@ -57,6 +57,12 @@ def faq():
 @app.route('/contacts')
 def contacts():
     return render_template('contacts.html')
+
+
+@app.route('/lol')
+@external_required
+def lol():
+    pass
 
 
 if __name__ == '__main__':

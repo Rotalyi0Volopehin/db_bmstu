@@ -1,21 +1,25 @@
 {
   "courier": [
-    "blueprint_market",
-    "blueprint_report",
-    "blueprint_query"
+    "the_first_scp",
+    "show_admins",
+    "show_courier_orders"
   ],
   "dispatcher": [
-    "blueprint_market",
-    "blueprint_report",
-    "blueprint_query"
+    "report_create",
+    "show_clients",
+    "show_online_orders",
+    "show_free_couriers",
+    "assign_courier"
   ],
   "executive": [
-    "blueprint_market",
-    "blueprint_report",
-    "blueprint_query"
+    "report_financial",
+    "report_top",
+    "report_efficiency",
+    "fire"
   ],
   "client": [
-    "blueprint_market",
-    "blueprint_query"
+    "order",
+    "queries",
+    "client_history"
   ]
 }

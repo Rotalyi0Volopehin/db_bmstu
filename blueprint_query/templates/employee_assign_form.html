@@ -63,18 +63,80 @@
 			</div>
 			<!-- Hero End -->
 
-
-
 			<!-- Services -->
             {% block internal_users %}{% endblock %}
 
             <div class="services">
 				<div class="container">
-                    {% block history %}{% endblock %}
-                    {% block order %}{% endblock %}
+                    <div class="main-title">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <ul class=flashes>
+
+                                {% for message in messages %}
+                                    <font size="10"> <h2 align="center"> {{ message }} </h2> </font>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 animated-element">
+                            <h1 align="center"> Свободные курьеры </h1> <br><br>
+                            <table border = 1 width = 80%>
+                              <tr>
+                                  {% for column in schema1 %}
+                                    <td class= border align="center">{{column}}</td>
+                                  {% endfor %}
+                              </tr>
+                                {% for line in result1 %}
+                                  <tr>
+                                   {% for column in line %}
+                                    <td align = 'center'> {{column}} </td>
+                                   {% endfor %}
+                                 </tr>
+                                {% endfor %}
+                            </table> <br><br>
+                        </div>
+                        <div class="col-lg-5 animated-element">
+                            <h1 align="center"> Список свободных заказов </h1> <br><br>
+                            <table border = 1 width = 80%>
+                              <tr>
+                                  {% for column in schema2 %}
+                                    <td class= border align="center">{{column}}</td>
+                                  {% endfor %}
+                              </tr>
+                                {% for line in result2 %}
+                                  <tr>
+                                   {% for column in line %}
+                                    <td align = 'center'> {{column}} </td>
+                                   {% endfor %}
+                                 </tr>
+                                {% endfor %}
+                            </table> <br><br>
+                        </div>
+                        <div class="col-lg-2 animated-element">
+                            <h2 align="center"> Назначение курьера</h2>
+                            <div align = center>
+                                <form action="", method ="POST">
+                                    <div class="container">
+                                        <div align = right>
+                                            <label for="product">Введите фамилию сотрудника</label>
+                                            <input name = surname id="fullname" type = text placeholder = "Бочаров"> <br>
+                                            <label for="product2">Введите имя сотрудника</label>
+                                            <input name = name id="surname" type = text placeholder = "Олег"> <br>
+                                            <label for="product3">Введите id заказа</label>
+                                            <input name = order type = text placeholder = "16">
+                                            <br><br>
+                                            <input type = submit value ="Назначить">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 			</div>
-
 
 
 

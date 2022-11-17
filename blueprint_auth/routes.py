@@ -89,4 +89,8 @@ def define_name(user_info):
     universal_name = select(current_app.config['db_config'], sql_name)
     if universal_name:
         user_info[0]['user_name'] = universal_name[0][table_col_name]
+
+    if dict_info['user_group'] == 'client':
+        user_info[0]['user_group'] = None
+
     return user_info

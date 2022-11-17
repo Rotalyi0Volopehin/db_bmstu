@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Report_result</title>
-    <link type="text/css" href="static/main.css" rel="stylesheet">
-</head>
-<body>
-<h1 align="center">Результаты отчета 1</h1><br><br>
-<div align="center">
-    <a href="{{ url_for('menu_choice') }}">Возврат в меню</a>
-</div>
-</body>
-</html>
+{% extends 'base_table.html' %}
+
+{% block history %}
+
+    <h1 align="center"> Отчёт о популярности блюд </h1> <br><br>
+    <table border = 1 width = 80%>
+      <tr>
+          {% for column in schema %}
+            <td class= border align="center">{{column}}</td>
+          {% endfor %}
+      </tr>
+        {% for line in result %}
+          <tr>
+           {% for column in line %}
+            <td align = 'center'> {{column}} </td>
+           {% endfor %}
+         </tr>
+        {% endfor %}
+    </table> <br><br>
+    
+{% endblock %}

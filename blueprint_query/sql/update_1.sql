@@ -1,0 +1,1 @@
+UPDATE pizza_order SET courier_id = $courier_id, dispatcher_id = $dispatcher_id WHERE order_id = $id
