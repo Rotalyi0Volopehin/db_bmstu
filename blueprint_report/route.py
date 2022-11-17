@@ -37,12 +37,14 @@ def create_product_report():
         return render_template('reports/product_report_form.html')
     else:
         date_str = request.form.get('month_num')
+        print(date_str)
         if date_str:
             year, month = date_str.split('-')
+            print(year, month)
             _sql = provider.get('product_report_check.sql', year_input=year, month_input=month)
             result = select_dict(current_app.config['dbconfig'], _sql)
             if result[0]['COUNT(*)'] == 0:
-                if call_proc(current_app.config['dbconfig'], 'product_report', month, year):
+                if call_proc(current_app.config['dbconfig'], 'news', month, year):
                     return render_template('report_created.html')
             else:
                 return render_template('reports/product_report_form.html', error='Отчет уже создан в системе')
@@ -57,9 +59,13 @@ def view_product_report():
         return render_template('reports/product_report_form.html')
     else:
         date_str = request.form.get('month_num')
+        print(date_str)
         if date_str:
             year, month = date_str.split('-')
+            month = int(month)
+            print(year, month)
             _sql = provider.get('product_report_view.sql', year_input=year, month_input=month)
+            print(_sql)
             result, schema = select(current_app.config['dbconfig'], _sql)
             if result:
                 return render_template('reports/product_report_view.html', month=month, year=year, result=result)

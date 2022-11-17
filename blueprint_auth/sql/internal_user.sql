@@ -1,1 +1,1 @@
-SELECT user_id, user_group FROM internal_user WHERE login = '$login' AND password = '$password'
+SELECT user_id, user_group FROM internal_user WHERE in_user_login = '$login' AND in_user_password = '$password'

@@ -45,7 +45,7 @@ def menu_choice():
     group = session.get('user_group')
     if group == 'admin':
         return render_template('menu/internal_user_admin.html')
-    elif group == 'marketer':
+    elif group == 'employee':
         return render_template('menu/internal_user_marketer.html')
     return render_template('menu/external_user.html')
 

@@ -21,7 +21,7 @@
 <body>
     <h1 align = center> Работа с отчетами</h1>
     <br><br><br>
-    <div align="center">
+
         {% for report in report_list %}
         <form action='' method='POST'>
             <label class="named_list"> {{report['rep_name']}}</label>
@@ -33,6 +33,6 @@
         {% endfor %}
         <br><br>
         <a href={{url_for('menu_choice')}}> Вернуться в меню </a>
-    </div>
+
 </body>
 </html>
