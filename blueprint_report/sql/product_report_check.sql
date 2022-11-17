@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM product_report WHERE rep_year=$year_input AND rep_month=$month_input;

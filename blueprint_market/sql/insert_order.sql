@@ -1,0 +1,1 @@
+INSERT user_orders VALUES(NULL, '$user_id', '$order_date')

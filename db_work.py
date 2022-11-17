@@ -3,19 +3,43 @@ from db_context_manager import DBContextManager
 
 
 def select(db_config: dict, sql: str) -> Tuple[Tuple, List[str]]:
-    """
-    это типо реализация select из sql только на питоне (хз зачем так сложно)
-    select запрос к БД с указанным конфигом и sql-запросом.
-        db_config - Конфиг для подключения к БД - это словарь
-        sql- SQL-запрос.
-    """
     result = tuple()
     schema = []
     with DBContextManager(db_config) as cursor:
         if cursor is None:
-            raise ValueError('Cursor not found')
+            raise ValueError('Курсор не создан')
         cursor.execute(sql)
-        print(sql)
         schema = [column[0] for column in cursor.description]
         result = cursor.fetchall()
-    return result, schema #возвращает список(точнее кортеж) с результатом запроса (result) и описанием колонок запроса (schema - это список заголовков таблицы)
+    return result, schema
+
+
+def select_dict(dbconfig: dict, _sql: str):
+    with DBContextManager(dbconfig) as cursor:
+        if cursor is None:
+            raise ValueError('Курсор не создан')
+        cursor.execute(_sql)
+        result = []
+        schema = [column[0] for column in cursor.description]
+        for row in cursor.fetchall():
+            result.append(dict(zip(schema, row)))
+    return result
+
+
+def call_proc(dbconfig: dict, proc_name: str, *args):
+    with DBContextManager(dbconfig) as cursor:
+        if cursor is None:
+            raise ValueError('Курсор не создан')
+        param_list = []
+        for arg in args:
+            param_list.append(arg)
+        res = cursor.callproc(proc_name, param_list)
+    return res
+
+
+def insert(dbconfig: dict, _sql: str):
+    with DBContextManager(dbconfig) as cursor:
+        if cursor is None:
+            raise ValueError('Курсор не создан')
+        result = cursor.execute(_sql)
+    return result

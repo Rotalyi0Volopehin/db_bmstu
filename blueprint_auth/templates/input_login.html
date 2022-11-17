@@ -2,23 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Authentication</title>
-    <link href="static/main.css" type="text/css" rel="stylesheet">
+    <title>Авторизация</title>
+    <link type=" text/css" rel="stylesheet" href="{{url_for('static', filename='bp_auth.css')}}">
+    <style type="text/css">
+        .error {
+            font-size: 16pt;
+            color: red
+        }
+        a {
+        font-size  : 16pt;
+        }
+    </style>
 </head>
+
 <body>
-  <h1 align="center"> Введите логин и пароль</h1> <br><br>
-  <div align="center">
-      <form method="POST" action="">
-          <label for="login"> Логин</label>
-          <input type="text" id="login" name="login"><br><br>
-
-          <label for="password"> Пароль </label>
-          <input type="text" name="password" id="password"><br><br> <!-- password вместо текста чтобы были точечки -->
-
-          <input type="submit" class="submit" value="Отправить">
-      </form>
-      <br><br>
-      <h2 align="center">{{ message }}</h2> <!-- уведомление (для этого случая просто пишется пользователь не обнаружен)-->
-  </div>
+    <h1 align="center"> Введите логин и пароль</h1>
+    <br><br>
+    <div align="center">
+        <form method="POST" action="">
+            <label for="login"> Логин</label>
+            <input type="text" id="login" name="login">
+            <br><br>
+            <label for="password"> Пароль </label>
+            <input type="password" name="password" id="password">
+            <br><br>
+            <input type="submit" class="submit" value="Отправить">
+        </form>
+        <br><br>
+        <p class="error"> {{ error }} </p>
+        <a href={{url_for('start_func')}}> На главную</a>
+    </div>
 </body>
 </html>

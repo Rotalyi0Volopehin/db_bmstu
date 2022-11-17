@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр отчета</title>
+    <link type=" text/css" rel="stylesheet" href="{{url_for('static', filename='bp_report.css')}}">
+    <link type=" text/css" rel="stylesheet" href="{{url_for('static', filename='query_result_set.css')}}">
+    <style type="text/css">
+        a {
+        font-size  : 16pt;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 align="center"> Отчет о проданных товарах за {{year}}.{{month}}</h2>
+    <div align="center">
+        <table border = 1 width = 80%>
+        <tr>
+            <td class= border align="center">Наименование товара</td>
+            <td class= border align="center">Мера товара</td>
+            <td class= border align="center">Проданное количество</td>
+            <td class= border align="center">Суммарная стоимость</td>
+        </tr>
+        {% for line in result %}
+            <tr>
+                {% for column in line %}
+                    <td align = 'center'> {{column}} </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <br><br>
+    <div align="center">
+        <a href={{url_for('bp_report.start_report')}}> Вернуться к выбору отчета</a>
+    </div>
+</body>
+</html>

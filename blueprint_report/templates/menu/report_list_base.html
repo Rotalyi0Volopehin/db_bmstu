@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Работа с отчетами </title>
+    <link type=" text/css" rel="stylesheet" href="{{url_for('static', filename='bp_report.css')}}">
+    <style type="text/css">
+        a {
+        font-size  : 16pt;
+        }
+        .named_list {
+            font-size: 16pt;
+            color: black;
+            display: inline-block;
+            width: 500px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align = center> Работа с отчетами</h1>
+    <br><br><br>
+    <div align="center">
+        {% for report in report_list %}
+        <form action='' method='POST'>
+            <label class="named_list"> {{report['rep_name']}}</label>
+            {% block report_admin %}{% endblock %}
+            {% block report_marketer %}{% endblock %}
+            <input type="hidden" name="rep_id" value="{{report['rep_id']}}">
+            <br>
+        </form>
+        {% endfor %}
+        <br><br>
+        <a href={{url_for('menu_choice')}}> Вернуться в меню </a>
+    </div>
+</body>
+</html>

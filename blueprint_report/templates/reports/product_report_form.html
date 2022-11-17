@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма отчета</title>
+    <link type=" text/css" rel="stylesheet" href="{{url_for('static', filename='bp_report.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='query_form.css')}}">
+    <style type="text/css">
+        a {
+        font-size  : 16pt;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 align="center"> Отчет о проданных товарах за месяц</h2>
+    <div align = center>
+        <form action="" method ="POST">
+            <label for="month">Выберите месяц</label>
+            <input type="month" id="month" name="month_num"/>
+            <br><br>
+            <input type="submit" value ="Отправить">
+        </form>
+        <br>
+        <p class="error"> {{ error }} </p>
+        <br><br><br>
+        <a href={{url_for('bp_report.start_report')}}> Вернуться</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет создан</title>
+    <link type=" text/css" rel="stylesheet" href="{{url_for('static', filename='bp_report.css')}}">
+    <style type="text/css">
+        a {
+        font-size  : 16pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center">
+        <h2> Отчет успешно создан! </h2>
+        <br><br><br>
+        <a href={{url_for('bp_report.start_report')}}> Вернуться к выбору отчета</a>
+    </div>
+</body>
+</html>

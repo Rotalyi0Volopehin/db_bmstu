@@ -1,28 +1,25 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Поиск продукта</title>
-    <style type="text/css">
-      h2 { font-size  : 14pt;
-           color      : black
-      }
-      label { font-size  : 14pt;
-              color      : green
-      }
-    </style>
+    <title>Форма запроса</title>
+    <link type=" text/css" rel="stylesheet" href="{{url_for('static', filename='bp_query.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='query_form.css')}}">
 </head>
+
 <body>
-  <h2 align="center"> Введите название продукта</h2>
+    <h2 align="center"> Сведения о товаре</h2>
     <div align = center>
-        <form action="", method ="POST">
+        <form action="" method ="POST">
             <label for="product">Введите название продукта</label>
             <input name = product_name id="product" type = text placeholder = product_name>
             <br><br>
             <input type = submit value ="Отправить">
         </form>
+        <br>
+        <p class="error"> {{ error }} </p>
     </div>
-
+    <br><br><br>
+    <a href={{url_for('menu_choice')}}> Вернуться</a>
 </body>
 </html>

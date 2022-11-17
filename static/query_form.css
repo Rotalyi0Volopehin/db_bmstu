@@ -1,0 +1,17 @@
+h2 {
+    font-size: 20pt;
+    color: black
+}
+label {
+    font-size: 14pt;
+    color: green
+}
+
+.error {
+    font-size: 16pt;
+    color: red
+}
+
+a {
+    font-size: 16pt;
+}

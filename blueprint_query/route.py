@@ -1,27 +1,29 @@
-import os  # работа с объектами операционной системы
-
-from flask import Flask, Blueprint, request, render_template, current_app  # глобальная переменная с конфигом app
-
+from flask import Blueprint, request, render_template, current_app
 from db_work import select
-from database.sql_provider import SQLProvider
+from sql_provider import SQLProvider
+from access import login_required, group_required
+import os
 
 
-blueprint_query = Blueprint('blueprint_query', __name__, template_folder='templates')  # создание blueprint'а
+blueprint_query = Blueprint('bp_query', __name__, template_folder='templates')
 
-provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))  # создание словаря для текущего blueprint'а
+provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 
 
-#@blueprint_query.route('/', methods=['GET', 'POST'])
-@blueprint_query.route('/queries', methods=['GET', 'POST'])
-def queries():
+@blueprint_query.route('/', methods=['GET', 'POST'])
+@login_required
+@group_required
+def query():
     if request.method == 'GET':
         return render_template('product_form.html')
     else:
-        input_product = request.form.get('product_name')
-        if input_product:
-
-            _sql = provider.get('product.sql', input_product=input_product)
-            product_result, schema = select(current_app.config['db_config'], _sql)
-            return render_template('db_result.html', schema=schema, result=product_result)
+        product = request.form.get('product_name')
+        if product:
+            _sql = provider.get('product.sql', input_product=product)
+            result, schema = select(current_app.config['dbconfig'], _sql)
+            if result:
+                return render_template('result_set.html', schema=schema, result=result)
+            else:
+                return render_template('product_form.html', error='Результаты не найдены')
         else:
-            return "Repeat input"
+            return render_template('product_form.html', error='Повторите ввод')
