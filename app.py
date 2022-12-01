@@ -51,12 +51,12 @@ def order():
 
 @app.route('/faq')
 def faq():
-    return render_template('faq.html')
+    return render_template('foote22r.html')
 
 
 @app.route('/contacts')
 def contacts():
-    return render_template('contacts.html')
+    return render_template('header22.html')
 
 
 @app.route('/lol')
