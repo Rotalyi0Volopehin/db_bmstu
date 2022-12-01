@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, request, current_app, session, redirect, url_for
+from pymysql.cursors import Cursor
 from sql_provider import SQLProvider
 from db_context_manager import DBContextManager
 from db_work import select_dict, insert
 from access import login_required, external_required
-import os
+import os, time
 
 blueprint_market = Blueprint('bp_market', __name__, template_folder='templates')
 
@@ -55,10 +56,11 @@ def add_to_basket(prod_id: str, items: dict):
 def save_order():
     user_id = session.get('user_id')
     current_basket = session.get('basket', {})
-    order_id = save_order_with_list(current_app.config['dbconfig'], user_id, current_basket)
-    if order_id:
-        session.pop('basket')
-        return render_template('order_created.html', order_id=order_id)
+    if 'basket' in session:
+        order_id = save_order_with_list(current_app.config['dbconfig'], user_id, current_basket)
+        if order_id:
+            session.pop('basket')
+            return render_template('order_created.html', order_id=order_id)
     else:
         return 'Что-то пошло не так'
 
@@ -76,7 +78,9 @@ def save_order_with_list(dbconfig: dict, user_id: int, current_basket: dict):
     with DBContextManager(dbconfig) as cursor:
         if cursor is None:
             raise ValueError('Курсор не создан')
-        _sql1 = provider.get('insert_order.sql', user_id=user_id, order_date='2022-12-02')  # todo Системная дата
+
+        cur_date = time.strftime('%Y-%m-%d',time.gmtime())
+        _sql1 = provider.get('insert_order.sql', user_id=user_id, order_date=cur_date)
         result1 = cursor.execute(_sql1)
         if result1 == 1:  # 1 - кол-во созданных строк
             _sql2 = provider.get('select_order_id.sql', user_id=user_id)

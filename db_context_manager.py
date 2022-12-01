@@ -26,9 +26,11 @@ class DBContextManager:
             return None
 
     def __exit__(self, exc_type, exc_val, exc_tr) -> bool:
+
         if exc_type:
             print(f"Error type: {exc_type.__name__}")
             print(f"DB error: {' '.join(exc_val.args)}")
+
         if self.conn and self.cursor:
             if exc_type:
                 self.conn.rollback()

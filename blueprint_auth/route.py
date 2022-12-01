@@ -23,7 +23,6 @@ def authentication():
         password = request.form.get('password')
         if login:
             user_info = define_user(login, password)
-            print(user_info)
             if user_info:
                 user_dict = user_info[0]
                 session['user_id'] = user_dict['user_id']
@@ -39,6 +38,7 @@ def define_user(login: str, password: str) -> Optional[Dict]:
     sql_internal = provider.get('internal_user.sql', login=login, password=password)
     sql_external = provider.get('external_user.sql', login=login, password=password)
     for sql_search in [sql_internal, sql_external]:
+        print(sql_search)
         user_info = select_dict(current_app.config['dbconfig'], sql_search)
         if user_info:
             break

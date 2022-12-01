@@ -3,16 +3,18 @@ from blueprint_query.route import blueprint_query
 from blueprint_auth.route import blueprint_auth
 from blueprint_market.route import blueprint_market
 from blueprint_report.route import blueprint_report
+
 from access import login_required, group_required, external_required
 from typing import List, Callable
 
 app = Flask(__name__)
-app.secret_key = 'Key'
+app.secret_key = '111'
 
 app.register_blueprint(blueprint_auth, url_prefix='/auth')
 app.register_blueprint(blueprint_query, url_prefix='/query')
 app.register_blueprint(blueprint_market, url_prefix='/market')
 app.register_blueprint(blueprint_report, url_prefix='/report')
+
 
 with open('configs/dbconfig.json', 'r') as file:
     db_config = json.load(file)
