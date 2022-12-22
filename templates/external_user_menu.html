@@ -5,15 +5,23 @@
     <div class="container">
         <div class="main-title">
             <span><em></em></span>
-            <h2 id="orderFood">История заказов</h2>
+            <h2>История заказов</h2>
             <p>Вы же у нас уже заказывали, верно?</p>
         </div>
         <div class="row">
-            <div class="col-lg-12 animated-element">
+            <div class="col-lg-6 animated-element">
                 <a href="{{ url_for('blueprint_query.client_history') }}" class="service-link">
                     <div class="box text-center">
                         <div class="icon d-flex align-items-end"><i class="icon icon-history"></i></div>
                         <h3 class="service-title">Посмотреть историю заказов</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 animated-element">
+                <a href="{{ url_for('blueprint_query.set_mark') }}" class="service-link">
+                    <div class="box text-center">
+                        <div class="icon d-flex align-items-end"><i class="icon icon-star-half"></i></div>
+                        <h3 class="service-title">Оценить заказ</h3>
                     </div>
                 </a>
             </div>
@@ -30,7 +38,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 animated-element">
-                <a href="{{ url_for('blueprint_query.queries') }}" class="service-link"> <!-- href /order -->
+                <a href="{{ url_for('blueprint_query.order') }}" class="service-link"> <!-- href /order -->
                     <div class="box text-center">
                         <div class="icon d-flex align-items-end"><i class="icon icon-wallet"></i></div>
                         <h3 class="service-title">Оплатите заказ наличными</h3>

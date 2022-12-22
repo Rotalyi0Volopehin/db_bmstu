@@ -1,0 +1,1 @@
+UPDATE pizza_order SET courier_id = $courier_id, dispatcher_id = $dispatcher_id, order_time_depart=CURRENT_TIME WHERE order_id = $id

@@ -1,0 +1,1 @@
+INSERT INTO pizza_order VALUES (NULL, CURRENT_DATE, NULL, NULL, NULL, $price, $amount, "no", "yes", NULL, $client_id, NULL, $random)

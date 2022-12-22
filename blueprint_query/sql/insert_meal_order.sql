@@ -1,0 +1,1 @@
+INSERT INTO order_meal VALUES (NULL, $amount, $menu_id, $order_id)

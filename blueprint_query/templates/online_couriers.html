@@ -3,10 +3,11 @@
 {% block history %}
 
     <h1 align="center"> Свободные курьеры </h1> <br><br>
+    {% if result != () %}
     <table border = 1 width = 80%>
       <tr>
           {% for column in schema %}
-            <td class= border align="center">{{column}}</td>
+            <td class= border align="center" >{{column}}</td>
           {% endfor %}
       </tr>
         {% for line in result %}
@@ -17,5 +18,7 @@
          </tr>
         {% endfor %}
     </table> <br><br>
-    
+     {% else %}
+        <h3 align = 'center'> Все курьеры заняты </h3>
+    {% endif %}
 {% endblock %}

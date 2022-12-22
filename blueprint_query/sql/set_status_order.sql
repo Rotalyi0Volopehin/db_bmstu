@@ -1,0 +1,1 @@
+UPDATE pizza_order SET order_status_deliver = "yes", order_time_arrive=CURRENT_TIME, order_time_ordery=(SUBTIME(CURRENT_TIME,order_time_depart)) WHERE order_id = $id

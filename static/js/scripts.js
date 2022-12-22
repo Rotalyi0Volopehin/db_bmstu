@@ -320,7 +320,7 @@
 			return value !== '$ 0.00';
 		},
 		messages: {
-			en: 'Order is empty.'
+			en: 'Корзина пустая'
 		}
 	});
 
@@ -431,7 +431,7 @@
 	var extraIsChecked = false;
 	var qtyInput = 0;
 	var actualQty = 0;
-	var maxQty = 10;
+	var maxQty = 20;
 	var subSum = 0;
 	var deliveryFee = 10;
 	var total = 0;
@@ -443,7 +443,7 @@
 		$('#itemList').append('<li id="emptyCart"></li>');
 
 		// Fill the dedicated row
-		$('#emptyCart').html('<div class="order-list-img"><img src="../img/bg/empty-cart-small.jpg" alt="Your cart is empty"/></div><div class="order-list-details"> <h4>Your cart is empty</a><br/><small>Start adding items</small></h4> <div class="order-list-price format-price">0.00</div></div>');
+		$('#emptyCart').html('<div class="order-list-img"></div><div class="order-list-details"> <h4>Ваш корзина пустая</a><br/><small>Добавьте что-нибудь</small></h4> <div class="order-list-price format-price">0.00</div></div>');
 		formatPrice();
 	}
 

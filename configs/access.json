@@ -2,7 +2,8 @@
   "courier": [
     "the_first_scp",
     "show_admins",
-    "show_courier_orders"
+    "show_courier_orders",
+    "set_courier_order_status"
   ],
   "dispatcher": [
     "report_create",
@@ -20,6 +21,7 @@
   "client": [
     "order",
     "queries",
-    "client_history"
+    "client_history",
+    "set_mark"
   ]
 }

@@ -29,24 +29,19 @@ function confirmGuestOrder(event) {
 		$('.spinner-icon').show();
 		$.ajax({
 			contentType: 'application/json',
-			url: 'endpoint/ajax/create-order.php',
+			url: '/queries/order',
 			type: 'POST',
 			data: JSON.stringify({
 				items: [itemsArray],
-				email: document.getElementById('emailCashPayment').value,
-				name: document.getElementById('userNameCashPayment').value,
-				phone: document.getElementById('phoneCashPayment').value,
-				address: document.getElementById('addressCashPayment').value,
-				message: document.getElementById('messageCashPayment').value,
-
 				totalAmount: totalAmt,
 				shippingTotal: shippingPrice,
 				currency: currency
-
 			}),
-			success: function (data) {
+			success: async function (data) {
 				if (data != 'error') {
-					window.location = returnUrl;
+					callWarningPopup('#modalSuccess');
+					await new Promise(r => setTimeout(r, 2000));
+					window.location = '/queries/order';
 				} else {
 
 					$('#submitOrder').html('Submit');
@@ -61,17 +56,30 @@ function confirmGuestOrder(event) {
 }
 
 function formValidate() {
-	
-	var name = $('#userNameCashPayment').parsley();
-	var phone = $('#phoneCashPayment').parsley();
-	var email = $('#emailCashPayment').parsley();
-	var address = $('#addressCashPayment').parsley();
-	var message = $('#messageCashPayment').parsley();
 	var terms = $('#cbxCashPayment').parsley();	
 
-	if (!name.isValid() || !phone.isValid() || !email.isValid() || !address.isValid() || !message.isValid() || !terms.isValid()) {
+	if (!terms.isValid()) {
 		return false;
 	}
 	return true;
 
+}
+
+function callWarningPopup(popupId) {
+	$.magnificPopup.open({
+		items: {
+			src: popupId
+		},
+		type: 'inline',
+		fixedContentPos: false,
+		fixedBgPos: true,
+		closeOnBgClick: false,
+		overflowY: 'auto',
+		closeBtnInside: true,
+		preloader: false,
+		midClick: true,
+		removalDelay: 300,
+		closeMarkup: '<button title="%title%" type="button" class="mfp-close"></button>',
+		mainClass: 'my-mfp-zoom-in'
+	});
 }

@@ -82,16 +82,24 @@
 
                     <div class="row">
 
-                        <div class="col-lg-12 animated-element">                    <
-                            h2 align="center"> Увольнение сотрудника</h2>
+                        <div class="col-lg-12 animated-element">
+                            <h2 align="center"> Увольнение сотрудника</h2>
                             <div align = center>
-                            <form action="", method ="POST">
-                                <label for="product">Введите ФИО сотрудника</label>
-                                <input name = fullname id="fullname" type = text placeholder = "Виталий Цаль">
-                                <label for="product">Введите должность сотрудника</label>
-                                <input name = job id="job" type = text placeholder = "курьер">
+                            <form action="" method ="POST">
+                                <label for="product"> Введите ФИО сотрудника
+									<br>
+									<input name = fullname id="fullname" type = text placeholder = "Виталий Цаль">
+								</label>
+                                <label for="product"> Выберите должность сотрудника
+
+									<select name="job" class="form-select" aria-label="" >
+										<option selected value="1">Курьер</option>
+										<option value="2">Администратор-кассир</option>
+										<option value="3">Управляющий???</option>
+									</select>
+								</label>
                                 <br><br>
-                                <input type = submit value ="Отправить">
+                                <input type = submit value ="Подтвердить">
                             </form>
                             </div>
                         </div>

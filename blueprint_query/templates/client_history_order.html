@@ -3,6 +3,7 @@
 {% block history %}
 
     <h1 align="center"> История заказов </h1> <br><br>
+    {% if result != () %}
     <table border = 1 width = 80%>
       <tr>
           {% for column in schema %}
@@ -17,5 +18,7 @@
          </tr>
         {% endfor %}
     </table> <br><br>
-    
+    {% else %}
+        <h3 align = 'center'> Заказов нет </h3>
+    {% endif %}
 {% endblock %}

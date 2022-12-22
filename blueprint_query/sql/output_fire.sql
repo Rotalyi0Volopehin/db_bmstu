@@ -1,0 +1,1 @@
+SELECT $end FROM $tabler WHERE $ider = $id

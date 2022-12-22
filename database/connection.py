@@ -9,6 +9,8 @@ class UseDatabase:
     # - по сути этот класс реальная пустышка благодаря __ __
     def __init__(self, config: dict):
         self.config = config
+        self.conn = None
+        self.cursor = None
 
     def __enter__(self) -> Optional[Cursor]:
         try:
@@ -32,6 +34,7 @@ class UseDatabase:
                 self.cursor.close()
                 self.conn.close()
         else:
+            self.conn.commit()
             self.cursor.close()
             self.conn.close()
         return True

@@ -83,23 +83,30 @@
                     <div class="row">
                         <div class="col-lg-5 animated-element">
                             <h1 align="center"> Свободные курьеры </h1> <br><br>
-                            <table border = 1 width = 80%>
-                              <tr>
-                                  {% for column in schema1 %}
-                                    <td class= border align="center">{{column}}</td>
-                                  {% endfor %}
-                              </tr>
-                                {% for line in result1 %}
+                            {% if result1 != () %}
+                                <table border = 1 width = 80%>
                                   <tr>
-                                   {% for column in line %}
-                                    <td align = 'center'> {{column}} </td>
-                                   {% endfor %}
-                                 </tr>
-                                {% endfor %}
-                            </table> <br><br>
+                                      {% for column in schema1 %}
+                                        <td class= border align="center">{{column}}</td>
+                                      {% endfor %}
+                                  </tr>
+
+                                        {% for line in result1 %}
+                                          <tr>
+                                           {% for column in line %}
+                                            <td align = 'center'> {{column}} </td>
+                                           {% endfor %}
+                                         </tr>
+                                        {% endfor %}
+                                </table> <br><br>
+                            {% else %}
+                                <h3 align = 'center'> Свободных курьеров нет </h3>
+                            {% endif %}
+
                         </div>
                         <div class="col-lg-5 animated-element">
                             <h1 align="center"> Список свободных заказов </h1> <br><br>
+                            {% if result2 != () %}
                             <table border = 1 width = 80%>
                               <tr>
                                   {% for column in schema2 %}
@@ -114,6 +121,9 @@
                                  </tr>
                                 {% endfor %}
                             </table> <br><br>
+                            {% else %}
+                                <h3 align = 'center'> Все заказы распределены </h3>
+                            {% endif %}
                         </div>
                         <div class="col-lg-2 animated-element">
                             <h2 align="center"> Назначение курьера</h2>

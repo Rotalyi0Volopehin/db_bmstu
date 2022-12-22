@@ -43,12 +43,6 @@ def menu_choice():
     return render_template('external_user_menu.html')
 
 
-@app.route('/order', methods=['GET', 'POST'])
-@external_required
-def order():
-    return render_template('order-2.html')
-
-
 @app.route('/faq')
 def faq():
     return render_template('foote22r.html')
@@ -59,10 +53,9 @@ def contacts():
     return render_template('header22.html')
 
 
-@app.route('/lol')
-@external_required
-def lol():
-    pass
+@app.route('/order')
+def redirect_order():
+    return redirect(url_for('blueprint_query.order'))
 
 
 if __name__ == '__main__':

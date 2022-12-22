@@ -53,24 +53,24 @@
 		<main>
 
 			<!-- Hero -->
-			<div class="hero-order bg-img">
+			<div class="hero-order bg-mockup hero-bottom-border">
 				<div class="content">
 					<div class="container main-info">
 						<div class="row">
 							<div class="col-lg-9">
-								<h1>FoodBoard.</h1>
-								<p>Food order wizard with online payment</p>
+								<h1>TOTO PIZZA</h1>
+								<p>Служба доставки пиццы</p>
 								<div class="contact-info">
-									<a href="#"><i class="fa fa-map-marker"></i>1234 Street Name, City Name, USA</a>
-									<a href="#"> <i class="fa fa-phone"></i>+3630123456789</a>
-									<a href="#"><i class="fa fa-envelope"></i> info@yourdomain.com</a>
+									<a href="#"><i class="fa fa-map-marker"></i>Адрес: Винница, Винницкая область, Украина, 21000</a>
+									<a href="#"> <i class="fa fa-phone"></i>Тел: 8-(800)-555-35-55</a>
+									<a href="#"><i class="fa fa-envelope"></i> E-Mail: kek@today.com</a>
 								</div>
 							</div>
 							<div class="col-lg-3 review-wrap">
 								<a href="https://www.trustpilot.com/" class="review-link" target="_blank">
 									<div class="score">
-										<span>Excellent<em>Based on 230 reviews</em></span>
-										<strong>4.9</strong>
+										<span>Идеально<em>Оценка на основе 228 отзывов</em></span>
+										<strong>4.8</strong>
 									</div>
 								</a>
 							</div>
@@ -110,26 +110,27 @@
 							<section id="section1">
 								<!-- Title -->
 								<div class="main-title">
-									<h2>Starters</h2>
+									<h2>Основные блюда</h2>
 								</div>
 								<!-- Title End -->
 								<!-- Grid -->
 								<div class="row menu-gallery">
 									<!-- Grid Item 01 -->
-									<div id="gridItem13" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
+									{% for item in result1 %}
+									<div id="gridItem{{item['menu_id']}}" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
 										<div class="item-body">
 											<figure>
 												<img src="../static/img/gallery/grid-items/13.jpg" class="img-fluid" alt="">
 												<a href="../static/img/gallery/grid-items-large/13.jpg" class="item-body-link">
 													<div class="item-title">
-														<h3>Onion Soup</h3>
-														<small>With Toasted Bread</small>
+														<h3>{{item['menu_name']}}</h3>
+														<small>Вес: {{item['menu_weight']}} грамм</small>
 													</div>
 												</a>
 											</figure>
 											<ul>
 												<li>
-													<span class="item-price format-price">4.50</span>
+													<span class="item-price format-price">{{item['menu_price']}}</span>
 												</li>
 												<li>
 													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
@@ -137,98 +138,39 @@
 											</ul>
 										</div>
 									</div>
+									{% endfor %}
 									<!-- Grid Item 02 -->
-									<div id="gridItem14" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/14.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/14.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Pumpkin Soup</h3>
-														<small>With Roasted Seads</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">5.50</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
+
 									<!-- Grid Item 03 -->
-									<div id="gridItem15" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/15.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/15.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Bruschetta</h3>
-														<small>Tomatoes, Parmesan</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">6.00</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
+
 									<!-- Grid Item 04 -->
-									<div id="gridItem16" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/16.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/16.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Spaghetti</h3>
-														<small>With Cheese</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">7.00</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
 								</div>
 								<!-- Grid End -->
 							</section>
 							<section id="section2">
 								<!-- Title -->
 								<div class="main-title">
-									<h2>Main Meals</h2>
+									<h2>Напитки</h2>
 								</div>
 								<!-- Title End -->
 								<!-- Grid -->
 								<div class="row menu-gallery">
 									<!-- Grid Item 01 -->
-									<div id="gridItem17" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
+									{% for item in result2 %}
+									<div id="gridItem{{item['menu_id']}}" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
 										<div class="item-body">
 											<figure>
 												<img src="../static/img/gallery/grid-items/17.jpg" class="img-fluid" alt="">
 												<a href="../static/img/gallery/grid-items-large/17.jpg" class="item-body-link">
 													<div class="item-title">
-														<h3>Pork Steak</h3>
-														<small>With Potato and Sparrow Grass</small>
+														<h3>{{item['menu_name']}}</h3>
+														<small>Вес: {{item['menu_weight']}} грамм</small>
 													</div>
 												</a>
 											</figure>
 											<ul>
 												<li>
-													<span class="item-price format-price">11.00</span>
+													<span class="item-price format-price">{{item['menu_price']}}</span>
 												</li>
 												<li>
 													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
@@ -236,98 +178,37 @@
 											</ul>
 										</div>
 									</div>
+									{% endfor %}
 									<!-- Grid Item 02 -->
-									<div id="gridItem18" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/18.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/18.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Hamburger</h3>
-														<small>With French Frise</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">12.00</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
 									<!-- Grid Item 03 -->
-									<div id="gridItem19" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/19.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/19.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Fried Chicken</h3>
-														<small>With bed of Kale and Lemon Rice</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">13.00</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
 									<!-- Grid Item 04 -->
-									<div id="gridItem20" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/20.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/20.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Salmon Steak</h3>
-														<small>With Potato Puree and Parsley</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">13.50</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
 								</div>
 								<!-- Grid End -->
 							</section>
 							<section id="section3">
 								<!-- Title -->
 								<div class="main-title">
-									<h2>Desserts</h2>
+									<h2>Десерты</h2>
 								</div>
 								<!-- Title End -->
 								<!-- Grid -->
 								<div class="row menu-gallery">
 									<!-- Grid Item 01 -->
-									<div id="gridItem21" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
+									{% for item in result3 %}
+									<div id="gridItem{{item['menu_id']}}" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
 										<div class="item-body">
 											<figure>
 												<img src="../static/img/gallery/grid-items/21.jpg" class="img-fluid" alt="">
 												<a href="../static/img/gallery/grid-items-large/21.jpg" class="item-body-link">
 													<div class="item-title">
-														<h3>American Pancake</h3>
-														<small>With Chocolate and Strawberry</small>
+														<h3>{{item['menu_name']}}</h3>
+														<small>Вес: {{item['menu_weight']}} грамм</small>
 													</div>
 												</a>
 											</figure>
 											<ul>
 												<li>
-													<span class="item-price format-price">5.00</span>
+													<span class="item-price format-price">{{item['menu_price']}}</span>
 												</li>
 												<li>
 													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
@@ -335,72 +216,13 @@
 											</ul>
 										</div>
 									</div>
+									{% endfor %}
 									<!-- Grid Item 02 -->
-									<div id="gridItem22" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/22.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/22.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Chocolate Cake</h3>
-														<small>With Raspberry</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">5.50</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
+
 									<!-- Grid Item 03 -->
-									<div id="gridItem23" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/23.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/23.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Muffin</h3>
-														<small>With Cream and Cherry</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">6.00</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
+
 									<!-- Grid Item 04 -->
-									<div id="gridItem24" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
-										<div class="item-body">
-											<figure>
-												<img src="../static/img/gallery/grid-items/24.jpg" class="img-fluid" alt="">
-												<a href="../static/img/gallery/grid-items-large/24.jpg" class="item-body-link">
-													<div class="item-title">
-														<h3>Brownie</h3>
-														<small>With Caramel</small>
-													</div>
-												</a>
-											</figure>
-											<ul>
-												<li>
-													<span class="item-price format-price">6.50</span>
-												</li>
-												<li>
-													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
+
 								</div>
 								<!-- Grid End -->
 							</section>
@@ -411,12 +233,12 @@
 							<!-- Order Container -->
 							<div id="orderContainer" class="theiaStickySidebar">
 								<!-- Form -->
-								<form method="POST" id="orderForm" name="orderForm" onsubmit="return confirmGuestOrder(event);">
+								<form method="POST" id="orderForm" name="orderForm" onsubmit="return confirmGuestOrder(event);"> <!-- href=/order -->
 
 									<!-- Step 1: Order Summary -->
 									<div id="#orderSummaryStep" class="step">
 										<div class="order-header">
-											<h3>Order Summary 1/2</h3>
+											<h3>Оформление заказа 1/2</h3>
 										</div>
 
 										<div class="order-body">
@@ -436,7 +258,7 @@
 												<div class="col-md-12 col-sm-12">
 													<label class="cbx radio-wrapper no-edges">
 														<input type="radio" value="delivery" name="transfer" checked> <span class="checkmark"></span>
-														<span class="radio-caption">Delivery Fee</span><span class="option-price format-price transfer">10.00</span>
+														<span class="radio-caption">Стоимость доставки</span><span class="option-price format-price transfer">10.00</span>
 													</label>
 												</div>
 											</div>
@@ -444,7 +266,7 @@
 											<!-- Total -->
 											<div class="row total-container">
 												<div class="col-md-12 p-0">
-													<span class="totalTitle">Total</span><span class="totalValue format-price float-right">0.00</span>
+													<span class="totalTitle">Сумма</span><span class="totalValue format-price float-right">0.00</span>
 													<input type="hidden" id="totalOrderSummary" class="total format-price" name="total" value="" data-parsley-errors-container="#totalError" data-parsley-empty-order="" disabled />
 												</div>
 											</div>
@@ -454,7 +276,7 @@
 											<div class="row">
 												<div class="col-md-12">
 													<button type="button" name="forward" class="btn-form-func forward">
-														<span class="btn-form-func-content">Continue Order</span>
+														<span class="btn-form-func-content">Продолжить</span>
 														<span class="icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 													</button>
 												</div>
@@ -467,53 +289,13 @@
 									<!-- Step 2: Checkout -->
 									<div class="step">
 										<div class="order-header">
-											<h3>Order Summary 2/2</h3>
+											<h3>Оформление заказа 2/2</h3>
 										</div>
-										<div id="personalDetails" data-return-url='<?php echo Config::THANKYOU_URL; ?>' data-currency='<?php echo Config::CURRENCY; ?>'>
+										<div id="personalDetails" data-return-url="{{ url_for('blueprint_query.order') }}" data-currency='<?php echo Config::CURRENCY; ?>'>
 											<div class="order-body">
-												<div class="row">
-													<div class="col-md-12">
-														<div class="form-group">
-															<label for="userNameCashPayment">Full Name</label>
-															<input id="userNameCashPayment" class="form-control" name="username" type="text" data-parsley-pattern="^[a-zA-Z\s.]+$" required />
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-12">
-														<div class="form-group">
-															<label for="phoneCashPayment">Phone +12345</label>
-															<input id="phoneCashPayment" class="form-control" name="phone" type="text" data-parsley-pattern="^\+{1}[0-9]+$" required />
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-12">
-														<div class="form-group">
-															<label for="emailCashPayment">Email</label>
-															<input id="emailCashPayment" class="form-control" name="email" type="email" required />
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-12 col-sm-6">
-														<div class="form-group">
-															<label for="addressCashPayment">Delivery Address</label>
-															<input id="addressCashPayment" class="form-control" name="address" type="text" data-parsley-pattern="^[,.a-zA-Z0-9\s.]+$" required />
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-12">
-														<div class="form-group">
-															<label for="messageCashPayment">Message</label>
-															<input id="messageCashPayment" class="form-control" name="message" type="text" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$" />
-														</div>
-													</div>
-												</div>
 												<div class="row total-container">
 													<div class="col-md-12 p-0">
-														<span class="totalTitle">Total</span><span class="totalValue format-price float-right">0.00</span>
+														<span class="totalTitle">Сумма</span><span class="totalValue format-price float-right">0.00</span>
 													</div>
 												</div>
 												<div class="row">
@@ -526,33 +308,36 @@
 																		<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
 																	</svg>
 																</span>
-																<span>Accept<a href="../static/pdf/terms.pdf" class="terms-link" target="_blank">Terms</a>.</span>
+																<span>Принять<a href="../static/pdf/terms.pdf" class="terms-link" target="_blank">условия</a>.</span>
 															</label>
 														</div>
 													</div>
 													<div class="col-6 pl-0">
-														<a href="javascript:;" class="modify-order backward">Modify Order</a>
+														<a href="javascript:;" class="modify-order backward">Изменить заказ</a>
 													</div>
 												</div>
 												<div class="row">
 													<div class="col-md-12">
+														<form method="POST" action="">
 														<button type="submit" name="submit" id="submitOrder" class="btn-form-func">
-															<span class="btn-form-func-content">Submit</span>
+															<span class="btn-form-func-content">Подтвердить</span>
 															<span class="icon"><i class="fa fa-check" aria-hidden="true"></i></span>
 														</button>
+
+														</form>
 													</div>
 												</div>
 												<div class="row">
 													<div class="col-md-12">
 														<button type="button" name="backward" class="btn-form-func btn-form-func-alt-color backward">
-															<span class="btn-form-func-content">Back</span>
+															<span class="btn-form-func-content">Назад</span>
 															<span class="icon"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
 														</button>
 													</div>
 												</div>
 												<div class="row footer">
 													<div class="col-md-12 text-center">
-														<small>Copyrigth FoodBoard 2021.</small>
+														<small>Toto pizza incorporated</small>
 													</div>
 												</div>
 											</div>
@@ -581,8 +366,8 @@
 		<!-- Footer End -->
 
 		<!-- Notification Messages -->
-		<div class="addedToCartMsg">Added to cart</div>
-		<div class="alreadyInCartMsg">Already in cart</div>
+		<div class="addedToCartMsg">Добавлено в корзину</div>
+		<div class="alreadyInCartMsg">Уже есть в корзине</div>
 
 	</div>
 	<!-- Page End -->
@@ -590,15 +375,15 @@
 	<!-- Modal Warning Qty min. Limit -->
 	<div id="modalWarningQtyMinLimit" class="modal-popup zoom-anim-dialog mfp-hide">
 		<div class="small-dialog-header">
-			<h3>Warning</h3>
+			<h3>Внимание</h3>
 		</div>
 		<div class="content">
-			<h6 class="mb-0">Quantity minimum limit is: 1 !</h6>
+			<h6 class="mb-0">Минимальное количество одного блюда - 1!</h6>
 		</div>
 		<div class="footer">
 			<div class="row">
 				<div class="col-4 pr-0">
-					<button type="button" class="btn-modal-close">Got it</button>
+					<button type="button" class="btn-modal-close">Понятно</button>
 				</div>
 			</div>
 		</div>
@@ -608,18 +393,34 @@
 	<!-- Modal Warning Qty max. Limit -->
 	<div id="modalWarningQtyMaxLimit" class="modal-popup zoom-anim-dialog mfp-hide">
 		<div class="small-dialog-header">
-			<h3>Warning</h3>
+			<h3>Внимание</h3>
 		</div>
 		<div class="content">
-			<h6 class="mb-0">Quantity maximum limit is: 10 !</h6>
+			<h6 class="mb-0">Максимальное количество одного блюда - 20!</h6>
 		</div>
 		<div class="footer">
 			<div class="row">
 				<div class="col-4 pr-0">
-					<button type="button" class="btn-modal-close">Got it</button>
+					<button type="button" class="btn-modal-close">Понятно</button>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div id="modalSuccess" class="modal-popup zoom-anim-dialog mfp-hide">
+	  <div class="small-dialog-header">
+		  <h3>Успех</h3>
+	  </div>
+	  <div class="content">
+		  <h6 class="mb-0">Заказ создан!</h6>
+	  </div>
+	  <div class="footer">
+		  <div class="row">
+			  <div class="col-4 pr-0">
+				  <button type="button" class="btn-modal-close">Заказать ещё</button>
+			  </div>
+		  </div>
+	  </div>
 	</div>
 	<!-- Modal Warning Qty max. Limit End -->
 

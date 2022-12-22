@@ -1,0 +1,1 @@
+UPDATE pizza_order SET order_client_mark=$mark WHERE order_id=$id

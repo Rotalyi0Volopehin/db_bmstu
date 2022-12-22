@@ -1,0 +1,1 @@
+select $ider from $tabler where $namer = '$named' and $surnamer = '$surname'
