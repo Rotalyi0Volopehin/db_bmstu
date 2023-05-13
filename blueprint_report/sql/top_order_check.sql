@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM pizza_order WHERE order_date_create LIKE '$date%'

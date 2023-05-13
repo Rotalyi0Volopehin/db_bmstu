@@ -1,0 +1,39 @@
+{% extends 'base_table.html' %}
+
+{% block history %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 animated-element">
+            <h2 align="center"> Выбор даты отчёта</h2>
+            <div align = center>
+                <form action="" method ="POST">
+                    <label for="month">Выберите месяц</label>
+                    <input type="month" id="month" name="month_num"/>
+                    <input type="submit" value ="Просмотр">
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-9 animated-element">
+            <h1 align="center" id="product"> Отчёт о популярности блюд </h1> <br><br>
+            {% if result != () %}
+                <table border = 1 width = 80%>
+                  <tr>
+                      {% for column in schema %}
+                        <td class= border align="center">{{column}}</td>
+                      {% endfor %}
+                  </tr>
+                    {% for line in result %}
+                      <tr>
+                       {% for column in line %}
+                        <td align = 'center'> {{column}} </td>
+                       {% endfor %}
+                     </tr>
+                    {% endfor %}
+                </table> <br><br>
+            {% else %}
+                <h3 align = 'center'> Данные отсутствуют </h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

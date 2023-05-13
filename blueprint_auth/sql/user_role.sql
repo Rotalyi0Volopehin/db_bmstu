@@ -1,0 +1,1 @@
+select $ider from internal_user where user_id = $user_id

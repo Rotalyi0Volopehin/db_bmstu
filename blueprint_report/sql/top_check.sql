@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM menu_report WHERE menu_report_date LIKE '$date%'

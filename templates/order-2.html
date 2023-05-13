@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Food order wizard with online payment">
+	<meta name="author" content="UWS">
+	<title>TOTO pizza</title>
+
+	<!-- Favicon -->
+	<link href="../static/img/favicon.png" rel="shortcut icon">
+
+	<!-- Google Fonts - Jost -->
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome CSS -->
+	<link href="../static/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Custom Font Icons -->
+	<link href="../static/iconfont.min.css" rel="stylesheet">
+
+	<!-- Vendor CSS -->
+	<link href="../static/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/menu.css" rel="stylesheet">
+	<link href="../static/hamburgers.min.css" rel="stylesheet">
+	<link href="../static/mmenu.min.css" rel="stylesheet">
+	<link href="../static/magnific-popup.css" rel="stylesheet">
+	<link href="../static/float-labels.min.css" rel="stylesheet">
+
+	<!-- Main CSS -->
+	<link href="../static/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#stickyNavItems" data-offset="90">
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div>
+	<!-- Preloader End -->
+
+	<!-- Page -->
+	<div id="page">
+
+		<!-- Header -->
+		{% include 'header.html' %}
+		<!-- Header End -->
+
+		<!-- Main -->
+		<main>
+
+			<!-- Hero -->
+			<div class="hero-order bg-mockup hero-bottom-border">
+				<div class="content">
+					<div class="container main-info">
+						<div class="row">
+							<div class="col-lg-9">
+								<h1>TOTO PIZZA</h1>
+								<p>Служба доставки пиццы</p>
+								<div class="contact-info">
+									<a href="#"><i class="fa fa-map-marker"></i>Адрес: Винница, Винницкая область, Украина, 21000</a>
+									<a href="#"> <i class="fa fa-phone"></i>Тел: 8-(800)-555-35-55</a>
+									<a href="#"><i class="fa fa-envelope"></i> E-Mail: kek@today.com</a>
+								</div>
+							</div>
+							<div class="col-lg-3 review-wrap">
+								<a href="https://www.trustpilot.com/" class="review-link" target="_blank">
+									<div class="score">
+										<span>Идеально<em>Оценка на основе 228 отзывов</em></span>
+										<strong>4.8</strong>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Hero End -->
+
+			<!-- Sticky Nav -->
+			<nav class="sticky-nav">
+				<div class="container">
+					<ul id="stickyNavItems">
+						<li>
+							<a href="#section1" class="list-group-item sticky-nice-scroll">Основные блюда</a>
+						</li>
+						<li>
+							<a href="#section2" class="list-group-item sticky-nice-scroll">Напитки</a>
+						</li>
+						<li>
+							<a href="#section3" class="list-group-item sticky-nice-scroll">Десерты</a>
+						</li>
+					</ul>
+				</div>
+				<span></span>
+			</nav>
+			<!-- Sticky Nav End -->
+
+			<!-- Order -->
+			<div class="order">
+				<!-- Container -->
+				<div class="container">
+					<!-- Row -->
+					<div class="row">
+						<!-- Left Sidebar -->
+						<div class="col-lg-8" id="mainContent">
+							<section id="section1">
+								<!-- Title -->
+								<div class="main-title">
+									<h2>Основные блюда</h2>
+								</div>
+								<!-- Title End -->
+								<!-- Grid -->
+								<div class="row menu-gallery">
+									<!-- Grid Item 01 -->
+									{% for item in result1 %}
+									<div id="gridItem{{item['menu_id']}}" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
+										<div class="item-body">
+											<figure>
+												<img src="../static/img/gallery/grid-items/13.jpg" class="img-fluid" alt="">
+												<a href="../static/img/gallery/grid-items-large/13.jpg" class="item-body-link">
+													<div class="item-title">
+														<h3>{{item['menu_name']}}</h3>
+														<small>Вес: {{item['menu_weight']}} грамм</small>
+													</div>
+												</a>
+											</figure>
+											<ul>
+												<li>
+													<span class="item-price format-price">{{item['menu_price']}}</span>
+												</li>
+												<li>
+													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									{% endfor %}
+									<!-- Grid Item 02 -->
+
+									<!-- Grid Item 03 -->
+
+									<!-- Grid Item 04 -->
+								</div>
+								<!-- Grid End -->
+							</section>
+							<section id="section2">
+								<!-- Title -->
+								<div class="main-title">
+									<h2>Напитки</h2>
+								</div>
+								<!-- Title End -->
+								<!-- Grid -->
+								<div class="row menu-gallery">
+									<!-- Grid Item 01 -->
+									{% for item in result2 %}
+									<div id="gridItem{{item['menu_id']}}" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
+										<div class="item-body">
+											<figure>
+												<img src="../static/img/gallery/grid-items/17.jpg" class="img-fluid" alt="">
+												<a href="../static/img/gallery/grid-items-large/17.jpg" class="item-body-link">
+													<div class="item-title">
+														<h3>{{item['menu_name']}}</h3>
+														<small>Вес: {{item['menu_weight']}} грамм</small>
+													</div>
+												</a>
+											</figure>
+											<ul>
+												<li>
+													<span class="item-price format-price">{{item['menu_price']}}</span>
+												</li>
+												<li>
+													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									{% endfor %}
+									<!-- Grid Item 02 -->
+									<!-- Grid Item 03 -->
+									<!-- Grid Item 04 -->
+								</div>
+								<!-- Grid End -->
+							</section>
+							<section id="section3">
+								<!-- Title -->
+								<div class="main-title">
+									<h2>Десерты</h2>
+								</div>
+								<!-- Title End -->
+								<!-- Grid -->
+								<div class="row menu-gallery">
+									<!-- Grid Item 01 -->
+									{% for item in result3 %}
+									<div id="gridItem{{item['menu_id']}}" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 animated-element">
+										<div class="item-body">
+											<figure>
+												<img src="../static/img/gallery/grid-items/21.jpg" class="img-fluid" alt="">
+												<a href="../static/img/gallery/grid-items-large/21.jpg" class="item-body-link">
+													<div class="item-title">
+														<h3>{{item['menu_name']}}</h3>
+														<small>Вес: {{item['menu_weight']}} грамм</small>
+													</div>
+												</a>
+											</figure>
+											<ul>
+												<li>
+													<span class="item-price format-price">{{item['menu_price']}}</span>
+												</li>
+												<li>
+													<a href="javascript:;" class="add-item-to-cart"><i class="icon icon-shopping-cart"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									{% endfor %}
+									<!-- Grid Item 02 -->
+
+									<!-- Grid Item 03 -->
+
+									<!-- Grid Item 04 -->
+
+								</div>
+								<!-- Grid End -->
+							</section>
+						</div>
+						<!-- Left Sidebar End -->
+						<!-- Right Sidebar -->
+						<div class="col-lg-4" id="sidebar">
+							<!-- Order Container -->
+							<div id="orderContainer" class="theiaStickySidebar">
+								<!-- Form -->
+								<form method="POST" id="orderForm" name="orderForm" onsubmit="return confirmGuestOrder(event);"> <!-- href=/order -->
+
+									<!-- Step 1: Order Summary -->
+									<div id="#orderSummaryStep" class="step">
+										<div class="order-header">
+											<h3>Оформление заказа 1/2</h3>
+										</div>
+
+										<div class="order-body">
+											<!-- Cart Items -->
+											<div class="row">
+												<div class="col-md-12">
+													<div class="order-list">
+														<ul id="itemList">
+															<!-- Cart Items / will be generated by js -->
+														</ul>
+													</div>
+												</div>
+											</div>
+											<!-- Cart Items End -->
+											<!-- Delivery Fee -->
+											<div class="row">
+												<div class="col-md-12 col-sm-12">
+													<label class="cbx radio-wrapper no-edges">
+														<input type="radio" value="delivery" name="transfer" checked> <span class="checkmark"></span>
+														<span class="radio-caption">Стоимость доставки</span><span class="option-price format-price transfer">10.00</span>
+													</label>
+												</div>
+											</div>
+											<!-- Delivery Fee -->
+											<!-- Total -->
+											<div class="row total-container">
+												<div class="col-md-12 p-0">
+													<span class="totalTitle">Сумма</span><span class="totalValue format-price float-right">0.00</span>
+													<input type="hidden" id="totalOrderSummary" class="total format-price" name="total" value="" data-parsley-errors-container="#totalError" data-parsley-empty-order="" disabled />
+												</div>
+											</div>
+											<div id="totalError"></div>
+											<!-- Total End -->
+											<!-- Forward Button -->
+											<div class="row">
+												<div class="col-md-12">
+													<button type="button" name="forward" class="btn-form-func forward">
+														<span class="btn-form-func-content">Продолжить</span>
+														<span class="icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+													</button>
+												</div>
+											</div>
+											<!-- Forward Button End -->
+										</div>
+									</div>
+									<!-- Step 1: Order Summary End -->
+
+									<!-- Step 2: Checkout -->
+									<div class="step">
+										<div class="order-header">
+											<h3>Оформление заказа 2/2</h3>
+										</div>
+										<div id="personalDetails" data-return-url="{{ url_for('blueprint_query.order') }}" data-currency='<?php echo Config::CURRENCY; ?>'>
+											<div class="order-body">
+												<div class="row total-container">
+													<div class="col-md-12 p-0">
+														<span class="totalTitle">Сумма</span><span class="totalValue format-price float-right">0.00</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-6 pr-0">
+														<div class="form-group">
+															<input type="checkbox" id="cbxCashPayment" class="inp-cbx" name="terms" value="yes" required />
+															<label class="cbx terms" for="cbxCashPayment">
+																<span>
+																	<svg width="12px" height="10px" viewbox="0 0 12 10">
+																		<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+																	</svg>
+																</span>
+																<span>Принять<a href="../static/pdf/terms.pdf" class="terms-link" target="_blank">условия</a>.</span>
+															</label>
+														</div>
+													</div>
+													<div class="col-6 pl-0">
+														<a href="javascript:;" class="modify-order backward">Изменить заказ</a>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<form method="POST" action="">
+														<button type="submit" name="submit" id="submitOrder" class="btn-form-func">
+															<span class="btn-form-func-content">Подтвердить</span>
+															<span class="icon"><i class="fa fa-check" aria-hidden="true"></i></span>
+														</button>
+
+														</form>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<button type="button" name="backward" class="btn-form-func btn-form-func-alt-color backward">
+															<span class="btn-form-func-content">Назад</span>
+															<span class="icon"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+														</button>
+													</div>
+												</div>
+												<div class="row footer">
+													<div class="col-md-12 text-center">
+														<small>Toto pizza incorporated</small>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Step 2: Checkout End -->
+
+								</form>
+								<!-- Form End -->
+							</div>
+							<!-- Order Container End -->
+						</div>
+						<!-- Right Sidebar End -->
+					</div>
+					<!-- Row End -->
+				</div>
+				<!-- Container End -->
+			</div>
+			<!-- Order End -->
+
+		</main>
+		<!-- Main End -->
+
+		<!-- Footer -->
+		{% include 'footer.html' %}
+		<!-- Footer End -->
+
+		<!-- Notification Messages -->
+		<div class="addedToCartMsg">Добавлено в корзину</div>
+		<div class="alreadyInCartMsg">Уже есть в корзине</div>
+
+	</div>
+	<!-- Page End -->
+
+	<!-- Modal Warning Qty min. Limit -->
+	<div id="modalWarningQtyMinLimit" class="modal-popup zoom-anim-dialog mfp-hide">
+		<div class="small-dialog-header">
+			<h3>Внимание</h3>
+		</div>
+		<div class="content">
+			<h6 class="mb-0">Минимальное количество одного блюда - 1!</h6>
+		</div>
+		<div class="footer">
+			<div class="row">
+				<div class="col-4 pr-0">
+					<button type="button" class="btn-modal-close">Понятно</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Warning Qty min. Limit End -->
+
+	<!-- Modal Warning Qty max. Limit -->
+	<div id="modalWarningQtyMaxLimit" class="modal-popup zoom-anim-dialog mfp-hide">
+		<div class="small-dialog-header">
+			<h3>Внимание</h3>
+		</div>
+		<div class="content">
+			<h6 class="mb-0">Максимальное количество одного блюда - 20!</h6>
+		</div>
+		<div class="footer">
+			<div class="row">
+				<div class="col-4 pr-0">
+					<button type="button" class="btn-modal-close">Понятно</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="modalSuccess" class="modal-popup zoom-anim-dialog mfp-hide">
+	  <div class="small-dialog-header">
+		  <h3>Успех</h3>
+	  </div>
+	  <div class="content">
+		  <h6 class="mb-0">Заказ создан!</h6>
+	  </div>
+	  <div class="footer">
+		  <div class="row">
+			  <div class="col-4 pr-0">
+				  <button type="button" class="btn-modal-close">Заказать ещё</button>
+			  </div>
+		  </div>
+	  </div>
+	</div>
+	<!-- Modal Warning Qty max. Limit End -->
+
+	<!-- Back to top button -->
+	<div id="toTop"><i class="icon icon-chevron-up"></i></div>
+
+	<!-- Vendor Javascript Files -->
+	<script src="../static/vendor/jquery/jquery.min.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../static/vendor/easing/js/easing.min.js"></script>
+	<script src="../static/vendor/parsley/js/parsley.min.js"></script>
+	<script src="../static/vendor/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="../static/vendor/price-format/js/jquery.priceformat.min.js"></script>
+	<script src="../static/vendor/theia-sticky-sidebar/js/ResizeSensor.min.js"></script>
+	<script src="../static/vendor/theia-sticky-sidebar/js/theia-sticky-sidebar.min.js"></script>
+	<script src="../static/vendor/mmenu/js/mmenu.min.js"></script>
+	<script src="../static/vendor/magnific-popup/js/jquery.magnific-popup.min.js"></script>
+	<script src="../static/vendor/float-labels/js/float-labels.min.js"></script>
+	<script src="../static/vendor/jquery-wizard/js/jquery-ui-1.8.22.min.js"></script>
+	<script src="../static/vendor/jquery-wizard/js/jquery.wizard.js"></script>
+	<script src="../static/vendor/isotope/js/isotope.pkgd.min.js"></script>
+	<script src="../static/vendor/scrollreveal/js/scrollreveal.min.js"></script>
+	<script src="../static/vendor/lazyload/js/lazyload.min.js"></script>
+	<script src="../static/vendor/sticky-kit/js/sticky-kit.min.js"></script>
+
+	<!-- Order Javascript File -->
+	<script src="../static/pay-with-cash-on-delivery/assets/js/order.js"></script>
+
+	<!-- Main Javascript File -->
+	<script src="../static/js/scripts.js"></script>
+</body>
+
+</html>

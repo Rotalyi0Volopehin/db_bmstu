@@ -1,0 +1,1 @@
+UPDATE $tabler SET $end = (date_add(curdate(),INTERVAL 7 DAY)) WHERE $ider = $id

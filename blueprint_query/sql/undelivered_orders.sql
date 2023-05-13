@@ -1,0 +1,2 @@
+SELECT order_date_create, order_time_depart, order_meals_amount, order_summary_price, order_status_deliver, order_status_payment
+FROM pizza_order JOIN internal_user ON courier_id = owner_courier_id WHERE user_id = $user_id AND order_status_deliver="no";

@@ -1,0 +1,10 @@
+vasya'OR 1=1--'
+111'OR 1=1--'
+
+abacacabaaba'OR 1=1--'
+
+
+admin'; --'
+zero
+
+#TODO ДРОПНУТЬ ВСЮ БД

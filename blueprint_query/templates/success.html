@@ -1,0 +1,21 @@
+{% extends 'order-2.html' %}
+
+{% block success %}
+
+<div id="modalWarning" class="modal-popup zoom-anim-dialog mfp-hide">
+  <div class="small-dialog-header">
+      <h3>Успех</h3>
+  </div>
+  <div class="content">
+      <h6 class="mb-0">Заказ создан!</h6>
+  </div>
+  <div class="footer">
+      <div class="row">
+          <div class="col-4 pr-0">
+              <button type="button" class="btn-modal-close">Заказать ещё</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

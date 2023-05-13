@@ -1,0 +1,27 @@
+{
+  "courier": [
+    "the_first_scp",
+    "show_admins",
+    "show_courier_orders",
+    "set_courier_order_status"
+  ],
+  "dispatcher": [
+    "report_create",
+    "show_clients",
+    "show_online_orders",
+    "show_free_couriers",
+    "assign_courier"
+  ],
+  "executive": [
+    "report_financial",
+    "report_top",
+    "report_efficiency",
+    "fire"
+  ],
+  "client": [
+    "order",
+    "queries",
+    "client_history",
+    "set_mark"
+  ]
+}

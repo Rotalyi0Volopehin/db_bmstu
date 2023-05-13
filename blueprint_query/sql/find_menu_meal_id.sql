@@ -1,0 +1,1 @@
+SELECT DISTINCT menu_id FROM menu WHERE menu_name='$name_i'

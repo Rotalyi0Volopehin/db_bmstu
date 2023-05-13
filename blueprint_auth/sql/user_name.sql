@@ -1,0 +1,1 @@
+select $namer from $tabler where $ider = $user_id

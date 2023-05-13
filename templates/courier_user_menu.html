@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block courier_user %}
+<div class="services">
+				<div class="container">
+					<div class="main-title">
+						<span><em></em></span>
+						<h2 id="orderFood">Меню курьера</h2>
+                        <p>Выберите действие</p>
+					</div>
+					<div class="row">
+                        <div class="col-lg-4 animated-element">
+							<a href="{{ url_for('blueprint_query.show_admins') }}" class="service-link">
+								<div class="box text-center">
+									<div class="icon d-flex align-items-end"><i class="icon icon-users2"></i></div>
+									<h3 class="service-title">Просмотр администраторов</h3>
+								</div>
+							</a>
+						</div>
+                        <div class="col-lg-4 animated-element">
+							<a href="{{ url_for('blueprint_query.show_courier_orders') }}" class="service-link">
+								<div class="box text-center">
+									<div class="icon d-flex align-items-end"><i class="icon icon-cross-circle"></i></div>
+									<h3 class="service-title">Просмотр недоставленных заказов</h3>
+								</div>
+							</a>
+						</div>
+                        <div class="col-lg-4 animated-element">
+							<a href="{{ url_for('blueprint_query.set_courier_order_status') }}" class="service-link">
+								<div class="box text-center">
+									<div class="icon d-flex align-items-end"><i class="icon icon-alarm-clock2"></i></div>
+									<h3 class="service-title">Изменить статус заказа</h3>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock %}
