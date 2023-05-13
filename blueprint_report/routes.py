@@ -53,7 +53,7 @@ def report_create():
                     flash('Отчёт за указанный период уже создан')
                     return render_template('report_create.html')
             else:
-                flash('Заказов за указанный период не существует')
+                flash('Данных за указанный период не существует')
                 return render_template('report_create.html')
         flash('Повторите ввод')
         return render_template('report_create.html')

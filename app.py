@@ -1,7 +1,7 @@
 # import antigravity
 
 import json
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, flash
 from access import login_required, external_required, group_required
 from blueprint_auth.routes import blueprint_auth
 from blueprint_report.routes import blueprint_report
